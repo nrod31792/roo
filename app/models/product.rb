@@ -12,12 +12,12 @@ class Product < ActiveRecord::Base
   end
 
 
-    def self.open_spreadsheet(file)
-  		case File.extname(file.original_filename)
-  		when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
-  		when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
-  		when ".xlsx" then Roo::Excelx.new(file.path, :ignore if nil)
-  		else raise "Unknown file type: #{file.original_filename}"
-  		end
+  def self.open_spreadsheet(file)
+    extension = get_file_type(file)
+    if extension.in?(%w(csv xls xlsx))
+      Roo::Spreadsheet.open(file.path, extension: extension)
+    else
+      raise "Unknown file type: #{file.original_filename}"
+    end
   end
 end
