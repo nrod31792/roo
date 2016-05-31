@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="https://sandbox.armorpayments.com/assets/js/modal.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var url = "https://app.armorpayments.com/accounts/290465/bankaccounts?action=create&user_auth_token=fa7c6352d60b2128b91767ee5b6a32e7";
+  armor.openModal(url);
+</script>
+
+<p>
+  <strong>Account:</strong>
+  <%= @account.account_id %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @account.company %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @account.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @account.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @account.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @account.postal_code %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @account.country %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @account.phone %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
